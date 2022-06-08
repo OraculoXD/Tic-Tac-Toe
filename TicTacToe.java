@@ -40,15 +40,28 @@ class TicTacToe {
         return r;
     }
 
+    /**
+     * Set a 
+     * 
+     * @param
+     * @param
+     * @param
+     * @param
+     */
     public static void set(String[][] b, int i, int j, String p) {
         if (b[i][j].equals(" ")) {
             b[i][j] = p;
         }
     }
 
+    /**
+     * Run
+     * 
+     * @param
+     */
     public static void main(String[] args) {
         Scanner sc;
-        String [][] board;
+        String[][] board;
         String player = "x";
         int i, j;
 
@@ -57,14 +70,21 @@ class TicTacToe {
         sc = new Scanner(System.in);
         while (true) {
             System.out.println(display(board));
-            i =sc.nextInt();
+            System.out.printf("%nJogador: %s%n", player);
+
+            System.out.printf("%nLinha (0, 1, 2 ou -1 para sair):");
+            i = sc.nextInt();
             if (i < 0) 
                 break;
+
+            System.out.printf("%nColuna (0, 1, 2 ou -1 para sair):");
             j = sc.nextInt();
-            
+            if (j < 0)
+                break;
+
             set(board, i, j, player);
-            
-            if(player.equals("x")) {
+
+            if (player.equals("x")) {
                 player = "o";
             } else {
                 player = "x";
