@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * A simple Tic-Tac-Toe game.
  * 
- * @autor gabriel.almeida98@edu.pucrs.br
+ * @author gabriel.almeida98@edu.pucrs.br
  * @version 2022-06-08
  */
 class TicTacToe {
@@ -13,13 +13,13 @@ class TicTacToe {
      * @return a 3x3 board
      */
     public static String[][] init() {
-        String[][] board = new String[3][3];
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                board[i][j] = " ";
+        String[][] b = new String[3][3];
+        for (int i = 0; i < b.length; i++) {
+            for (int j = 0; j < b[i].length; j++) {
+                b[i][j] = " ";
             }
         }
-        return board;
+        return b;
     }
 
     /**
@@ -55,6 +55,46 @@ class TicTacToe {
     }
 
     /**
+     * 
+     */
+    public static boolean isVictory(String[][] board, String player) {
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][0].equals(player) &&
+            board[i][1].equals(player) && 
+            board[i][2].equals(player)
+            ) {
+                return true;
+            }
+
+        }
+
+        for (int j = 0; j < board.length; j++) {
+            if (board[0][j].equals(player) &&
+            board[1][j].equals(player) && 
+            board[2][j].equals(player)
+            ) {
+                return true;
+            }
+
+        }
+
+        if (board[0][0].equals(player) &&
+        board[1][1].equals(player) && 
+        board[2][2].equals(player)
+        ) {
+            return true;
+        }
+        
+        if (board[0][2].equals(player) &&
+        board[1][1].equals(player) && 
+        board[2][0].equals(player)
+        ) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Run
      * 
      * @param
@@ -74,7 +114,7 @@ class TicTacToe {
 
             System.out.printf("%nLinha (0, 1, 2 ou -1 para sair):");
             i = sc.nextInt();
-            if (i < 0) 
+            if (i < 0)
                 break;
 
             System.out.printf("%nColuna (0, 1, 2 ou -1 para sair):");
@@ -83,6 +123,11 @@ class TicTacToe {
                 break;
 
             set(board, i, j, player);
+
+            if (isVictory(board, player)) {
+                System.out.printf("O jogador %s venceu!%n", player);
+                break;
+            }
 
             if (player.equals("x")) {
                 player = "o";
