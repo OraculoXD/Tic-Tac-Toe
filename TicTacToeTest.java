@@ -46,7 +46,7 @@ public class TicTacToeTest
                             {" "," "," "}};
         assertEquals(true, TicTacToe.hasFreeCell(board));
     }
-
+  
     @Test
     public void hasFreeCellFalse()  
     {
@@ -56,4 +56,12 @@ public class TicTacToeTest
         assertEquals(false, TicTacToe.hasFreeCell(board));
     }
 
+    @Test
+    public void displayIsEmpty()      
+    {
+        String[][] board = {{" "," "," "},
+                            {" "," "," "},
+                            {" "," "," "}};
+        assertEquals("  012\n0|   |\n1|   |\n2|   |\n", TicTacToe.display(board));
+    }
 }
